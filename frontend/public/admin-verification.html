@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Verification Management</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #333; margin-bottom: 30px; }
+        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .document-item { border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 5px; }
+        .document-item h3 { color: #555; margin-bottom: 10px; }
+        .document-info { margin-bottom: 10px; color: #666; }
+        .actions { margin-top: 15px; }
+        button { padding: 10px 20px; margin-right: 10px; border: none; border-radius: 5px; cursor: pointer; font-size: 14px; }
+        .btn-approve { background: #28a745; color: white; }
+        .btn-reject { background: #dc3545; color: white; }
+        .btn-approve:hover { background: #218838; }
+        .btn-reject:hover { background: #c82333; }
+        .status { padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+        .status.success { background: #d4edda; color: #155724; }
+        .status.error { background: #f8d7da; color: #721c24; }
+        .badge { padding: 5px 10px; border-radius: 3px; font-size: 12px; font-weight: bold; }
+        .badge-pending { background: #ffc107; color: #000; }
+        .badge-approved { background: #28a745; color: white; }
+        .badge-rejected { background: #dc3545; color: white; }
+        .empty-state { text-align: center; padding: 40px; color: #999; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Admin - Verification Management</h1>
+        
+        <div id="statusMessage"></div>
+        
+        <div class="card">
+            <h2>📄 Pending Document Verifications</h2>
+            <div id="pendingDocuments">
+                <p>Loading...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:8000/api';
+        let token = localStorage.getItem('token');
+
+        if (!token) {
+            alert('Please login as admin');
+            window.location.href = '/login.html';
+        }
+
+        loadPendingVerifications();
+
+        function showMessage(message, type = 'info') {
+            const statusDiv = document.getElementById('statusMessage');
+            statusDiv.innerHTML = `<div class="status ${type}">${message}</div>`;
+            setTimeout(() => statusDiv.innerHTML = '', 5000);
+        }
+
+        async function loadPendingVerifications() {
+            try {
+                const response = await fetch(`${API_URL}/verification/admin/pending`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                
+                if (response.status === 403) {
+                    alert('Admin access required');
+                    return;
+                }
+                
+                const data = await response.json();
+                displayPendingDocuments(data.pending_documents);
+            } catch (error) {
+                showMessage('Error loading verifications: ' + error.message, 'error');
+            }
+        }
+
+        function displayPendingDocuments(documents) {
+            const container = document.getElementById('pendingDocuments');
+            
+            if (!documents || documents.length === 0) {
+                container.innerHTML = '<div class="empty-state">✓ No pending verifications</div>';
+                return;
+            }
+
+            container.innerHTML = documents.map(doc => `
+                <div class="document-item">
+                    <h3>📄 ${doc.document_type.toUpperCase()}</h3>
+                    <div class="document-info">
+                        <p><strong>User:</strong> ${doc.user_name} (${doc.user_email})</p>
+                        <p><strong>Filename:</strong> ${doc.filename}</p>
+                        <p><strong>Uploaded:</strong> ${new Date(doc.uploaded_at).toLocaleString()}</p>
+                        <p><strong>Status:</strong> <span class="badge badge-${doc.status}">${doc.status.toUpperCase()}</span></p>
+                    </div>
+                    <div class="actions">
+                        <button class="btn-approve" onclick="approveDocument('${doc._id}')">✓ Approve</button>
+                        <button class="btn-reject" onclick="rejectDocument('${doc._id}')">✗ Reject</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function approveDocument(documentId) {
+            if (!confirm('Approve this document?')) return;
+
+            try {
+                const response = await fetch(`${API_URL}/verification/admin/approve/${documentId}`, {
+                    method: 'PUT',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    showMessage('Document approved successfully!', 'success');
+                    loadPendingVerifications();
+                } else {
+                    showMessage('Error: ' + data.detail, 'error');
+                }
+            } catch (error) {
+                showMessage('Error: ' + error.message, 'error');
+            }
+        }
+
+        async function rejectDocument(documentId) {
+            const reason = prompt('Enter rejection reason:');
+            if (!reason) return;
+
+            try {
+                const formData = new FormData();
+                formData.append('reason', reason);
+
+                const response = await fetch(`${API_URL}/verification/admin/reject/${documentId}`, {
+                    method: 'PUT',
+                    headers: { 'Authorization': `Bearer ${token}` },
+                    body: formData
+                });
+                const data = await response.json();
+                
+                if (data.status === 'success') {
+                    showMessage('Document rejected', 'success');
+                    loadPendingVerifications();
+                } else {
+                    showMessage('Error: ' + data.detail, 'error');
+                }
+            } catch (error) {
+                showMessage('Error: ' + error.message, 'error');
+            }
+        }
+    </script>
+</body>
+</html>

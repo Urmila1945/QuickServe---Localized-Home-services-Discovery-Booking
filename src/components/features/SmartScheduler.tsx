@@ -1,0 +1,6 @@
+// ... existing code ...
+
+// Fix the import path - change from ../../../services/api to ../../services/api
+import { api } from '../../services/api';
+
+// ... rest of existing code ...

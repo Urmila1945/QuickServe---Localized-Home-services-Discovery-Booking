@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickServe - Localized Service Discovery & Booking Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 100px 20px; text-align: center; position: relative; }
+        .hero h1 { font-size: 3.5em; margin-bottom: 20px; animation: fadeInDown 1s; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        .hero p { font-size: 1.3em; margin-bottom: 30px; opacity: 0.95; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .hero .cta { display: inline-block; background: white; color: #667eea; padding: 18px 45px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1em; margin: 10px; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .hero .cta:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .hero .cta.secondary { background: transparent; border: 3px solid white; color: white; }
+        .hero .cta.secondary:hover { background: white; color: #667eea; }
+        .problem { background: #f8f9fa; padding: 80px 20px; }
+        .problem-content { max-width: 900px; margin: 0 auto; text-align: center; }
+        .problem-content h2 { color: #667eea; font-size: 2.5em; margin-bottom: 30px; }
+        .problem-content p { font-size: 1.2em; line-height: 1.8; color: #555; }
+        .stats { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 80px 20px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .stat-item h3 { font-size: 3.5em; margin-bottom: 10px; font-weight: bold; }
+        .stat-item p { font-size: 1.2em; opacity: 0.9; }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .feature-card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
+        .feature-card .icon { font-size: 3em; margin-bottom: 15px; }
+        .feature-card h3 { color: #667eea; margin-bottom: 15px; font-size: 1.5em; }
+        .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .category-item { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 35px; border-radius: 12px; text-align: center; transition: all 0.3s; cursor: pointer; }
+        .category-item:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4); }
+        .category-item .icon { font-size: 3em; margin-bottom: 15px; }
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .step { text-align: center; padding: 20px; }
+        .step .number { background: #667eea; color: white; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5em; font-weight: bold; margin: 0 auto 20px; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); }
+        .step h3 { color: #667eea; margin-bottom: 15px; font-size: 1.5em; }
+        .ai-features { background: linear-gradient(135deg, #764ba2 0%, #667eea 100%); color: white; padding: 80px 20px; }
+        .ai-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
+        .ai-card { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s; }
+        .ai-card:hover { background: rgba(255,255,255,0.25); transform: translateY(-5px); }
+        .ai-card .icon { font-size: 3em; margin-bottom: 15px; }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5em; }
+            .hero p { font-size: 1.1em; }
+            .hero { padding: 60px 20px; }
+            .problem-content h2 { font-size: 2em; }
+            .stat-item h3 { font-size: 2.5em; }
+            .features, .category-grid, .steps, .ai-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState } = React;
+        
+        function LandingApp() {
+            return (
+                <div className="landing-app">
+                    <HeroSection />
+                    <ProblemSection />
+                    <StatsSection />
+                    <FeaturesSection />
+                    <AIFeaturesSection />
+                    <CategoriesSection />
+                    <HowItWorksSection />
+                    <FooterSection />
+                </div>
+            );
+        }
+        
+        function HeroSection() {
+            return (
+                <section className="hero">
+                    <div className="container">
+                        <h1 className="fade-in-down">🚀 QuickServe</h1>
+                        <p>Localized Service Discovery & Booking Platform</p>
+                        <p style={{fontSize: '1.1em', maxWidth: '800px', margin: '0 auto 30px'}}>Find reliable local service providers instantly with verified reviews, real-time availability, and secure online payments</p>
+                        <div>
+                            <a href="/services" className="cta">Search Services</a>
+                            <a href="index-standalone.html" className="cta">Get Started</a>
+                            <a href="#features" className="cta secondary">Learn More</a>
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+        
+        function ProblemSection() {
+            return (
+                <section className="problem">
+                    <div className="problem-content fade-in-up">
+                        <h2>The Problem We Solve</h2>
+                        <p>Finding reliable local service providers through word-of-mouth or sporadic internet searches is time-consuming and unreliable. QuickServe bridges this gap by providing a digital platform with verified reviews, detailed service information, real-time availability, secure online payments, and transparent communication.</p>
+                    </div>
+                </section>
+            );
+        }
+        
+        function StatsSection() {
+            const stats = [
+                { number: '500+', label: 'Verified Providers' },
+                { number: '12', label: 'Service Categories' },
+                { number: '50+', label: 'Cities Covered' },
+                { number: '200+', label: 'API Endpoints' }
+            ];
+            
+            return (
+                <section className="stats">
+                    <div className="stats-grid">
+                        {stats.map((stat, idx) => (
+                            <div key={idx} className="stat-item fade-in">
+                                <h3>{stat.number}</h3>
+                                <p>{stat.label}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            );
+        }
+        
+        function FeaturesSection() {
+            const features = [
+                { icon: '🔍', title: 'Smart Service Discovery', desc: 'Location-based search with ratings, reviews, pricing, and real-time availability' },
+                { icon: '📅', title: 'Slot Booking System', desc: 'Schedule services at your convenience' },
+                { icon: '💳', title: 'Secure Payments', desc: 'Integrated Stripe payment processing' },
+                { icon: '⭐', title: 'Verified Reviews', desc: 'AI-powered fake review detection' },
+                { icon: '📍', title: 'Real-Time Tracking', desc: 'Track provider location in real-time' },
+                { icon: '🏆', title: 'Loyalty Program', desc: '4-tier rewards system' },
+                { icon: '🎤', title: 'Voice Hailing', desc: 'Voice-activated service requests' },
+                { icon: '🚨', title: 'Emergency Booking', desc: 'Priority booking for urgent needs' },
+                { icon: '💬', title: 'In-App Chat', desc: 'Direct communication' }
+            ];
+            
+            return (
+                <section className="container" id="features">
+                    <h2 className="section-title">Core Features</h2>
+                    <div className="features">
+                        {features.map((feature, idx) => (
+                            <div key={idx} className="feature-card fade-in-up">
+                                <div className="icon">{feature.icon}</div>
+                                <h3>{feature.title}</h3>
+                                <p>{feature.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            );
+        }
+        
+        function AIFeaturesSection() {
+            const aiFeatures = [
+                { icon: '🤖', title: 'AI Chatbot', desc: '24/7 intelligent assistant' },
+                { icon: '🎙️', title: 'Voice Search', desc: 'Natural language commands' },
+                { icon: '📈', title: 'Demand Prediction', desc: 'ML-based forecasting' },
+                { icon: '🔍', title: 'Fake Review Detection', desc: 'Authenticity verification' },
+                { icon: '🎯', title: 'Smart Matching', desc: 'Automatic provider matching' },
+                { icon: '💡', title: 'Personalized Recommendations', desc: 'AI-based suggestions' }
+            ];
+            
+            return (
+                <section className="ai-features">
+                    <h2 className="section-title" style={{color: 'white'}}>AI-Powered Intelligence</h2>
+                    <div className="ai-grid">
+                        {aiFeatures.map((feature, idx) => (
+                            <div key={idx} className="ai-card fade-in">
+                                <div className="icon">{feature.icon}</div>
+                                <h3>{feature.title}</h3>
+                                <p>{feature.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            );
+        }
+        
+        function CategoriesSection() {
+            const categories = [
+                { icon: '🔧', name: 'Plumbing' },
+                { icon: '⚡', name: 'Electrical' },
+                { icon: '🧹', name: 'Cleaning' },
+                { icon: '💇', name: 'Beauty & Salon' },
+                { icon: '💪', name: 'Fitness' },
+                { icon: '🚚', name: 'Delivery' },
+                { icon: '🔨', name: 'Repair' },
+                { icon: '📚', name: 'Tutoring' },
+                { icon: '🪚', name: 'Carpentry' },
+                { icon: '🎨', name: 'Painting' },
+                { icon: '🌱', name: 'Gardening' },
+                { icon: '🐛', name: 'Pest Control' }
+            ];
+            
+            return (
+                <section className="container categories">
+                    <h2 className="section-title">Service Categories</h2>
+                    <div className="category-grid">
+                        {categories.map((cat, idx) => (
+                            <div key={idx} className="category-item fade-in">
+                                <div className="icon">{cat.icon}</div>
+                                <h3>{cat.name}</h3>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            );
+        }
+        
+        function HowItWorksSection() {
+            const steps = [
+                { number: 1, title: 'Search Services', desc: 'Browse by category, location, or voice' },
+                { number: 2, title: 'Compare & Select', desc: 'View ratings, reviews, and pricing' },
+                { number: 3, title: 'Book & Pay', desc: 'Schedule and make secure payments' },
+                { number: 4, title: 'Track & Review', desc: 'Track in real-time and leave reviews' }
+            ];
+            
+            return (
+                <section className="container how-it-works">
+                    <h2 className="section-title">How It Works</h2>
+                    <div className="steps">
+                        {steps.map((step, idx) => (
+                            <div key={idx} className="step fade-in-up">
+                                <div className="number">{step.number}</div>
+                                <h3>{step.title}</h3>
+                                <p>{step.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            );
+        }
+        
+        function FooterSection() {
+            return (
+                <footer className="footer">
+                    <div className="container">
+                        <h3>QuickServe - On-Demand Local Services Platform</h3>
+                        <p style={{margin: '20px 0'}}>Built with ❤️ using React 18 + Python FastAPI + MongoDB</p>
+                        <p>
+                            <a href="index-standalone.html">Launch App</a> | 
+                            <a href="http://localhost:8000/docs"> API Docs</a> | 
+                            <a href="http://localhost:8000/health"> Health Check</a>
+                        </p>
+                        <p style={{marginTop: '20px', opacity: 0.7}}>© 2024 QuickServe. All rights reserved.</p>
+                    </div>
+                </footer>
+            );
+        }
+        
+        ReactDOM.render(<LandingApp />, document.getElementById('root'));
+    </script>
+</body>
+</html>

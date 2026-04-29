@@ -1,0 +1,132 @@
+2026-03-24 20:25:27,587 - Login attempt: admin@demo.com
+2026-03-24 20:25:27,752 - User found: admin@demo.com with role: admin
+2026-03-24 20:25:29,039 - Login successful for user: admin@demo.com
+2026-03-24 20:25:29,114 - Get profile for user ID: 69b145401021c84bbbdbd8b7
+2026-03-24 20:25:29,124 - Profile returned for: admin@demo.com
+2026-03-24 20:31:57,805 - Login attempt: customer@demo.com
+2026-03-24 20:31:57,846 - User found: customer@demo.com with role: customer
+2026-03-24 20:31:59,875 - Login successful for user: customer@demo.com
+2026-03-24 20:31:59,937 - Get profile for user ID: 697f3a098c31c4c174de4ea6
+2026-03-24 20:31:59,946 - Profile returned for: customer@demo.com
+2026-03-24 20:35:21,237 - Get profile for user ID: 697f3a098c31c4c174de4ea6
+2026-03-24 20:35:21,271 - Profile returned for: customer@demo.com
+2026-03-24 20:35:21,289 - Get profile for user ID: 697f3a098c31c4c174de4ea6
+2026-03-24 20:35:21,295 - Profile returned for: customer@demo.com
+2026-03-26 21:21:13,043 - Login attempt: customer@demo.com
+2026-03-26 21:21:13,058 - User found: customer@demo.com with role: customer
+2026-03-26 21:21:13,569 - Login successful for user: customer@demo.com
+2026-03-26 21:21:13,595 - Get profile for user ID: 697f3a098c31c4c174de4ea6
+2026-03-26 21:21:13,635 - Profile returned for: customer@demo.com
+2026-03-26 21:21:52,703 - Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Users\URMILA\AppData\Local\Programs\Python\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\URMILA\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2026-03-26 21:31:19,107 - Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Users\URMILA\AppData\Local\Programs\Python\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\URMILA\AppData\Local\Programs\Python\Python313\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+2026-03-26 21:31:19,634 - Get profile for user ID: 697f3a098c31c4c174de4ea6
+2026-03-26 21:31:19,923 - Profile returned for: customer@demo.com
+2026-03-26 21:31:20,018 - Get profile for user ID: 697f3a098c31c4c174de4ea6
+2026-03-26 21:31:20,042 - Profile returned for: customer@demo.com
+2026-03-27 11:01:33,361 - Login attempt: yammahajan@gmail.com
+2026-03-27 11:01:33,401 - User found: yammahajan@gmail.com with role: provider
+2026-03-27 11:01:34,453 - Login successful for user: yammahajan@gmail.com
+2026-03-27 11:01:34,536 - Get profile for user ID: 69c6161b8df2ef0d5fa19d62
+2026-03-27 11:01:34,546 - Profile returned for: yammahajan@gmail.com
+2026-03-27 11:02:19,526 - Login attempt: customer@demo.com
+2026-03-27 11:02:19,540 - User found: customer@demo.com with role: customer
+2026-03-27 11:02:21,158 - Login successful for user: customer@demo.com
+2026-03-27 11:02:21,191 - Get profile for user ID: 697f3a098c31c4c174de4ea6
+2026-03-27 11:02:21,199 - Profile returned for: customer@demo.com
+2026-03-30 16:13:24,838 - Login attempt: customer@demo.com
+2026-03-30 16:13:24,897 - User found: customer@demo.com with role: customer
+2026-03-30 16:13:25,688 - Login successful for user: customer@demo.com
+2026-03-30 16:13:25,728 - Get profile for user ID: 697f3a098c31c4c174de4ea6
+2026-03-30 16:13:25,787 - Profile returned for: customer@demo.com
+2026-03-30 16:17:00,716 - Get profile for user ID: 697f3a098c31c4c174de4ea6
+2026-03-30 16:17:00,800 - Profile returned for: customer@demo.com
+2026-03-30 16:17:00,834 - Get profile for user ID: 697f3a098c31c4c174de4ea6
+2026-03-30 16:17:00,840 - Profile returned for: customer@demo.com
+2026-03-31 13:22:28,788 - Get profile for user ID: 697f3a098c31c4c174de4ea6
+2026-03-31 13:22:28,876 - Profile returned for: customer@demo.com
+2026-03-31 13:22:28,903 - Get profile for user ID: 697f3a098c31c4c174de4ea6
+2026-03-31 13:22:28,909 - Profile returned for: customer@demo.com
+2026-03-31 13:34:43,179 - Login attempt: provider@demo.com
+2026-03-31 13:34:43,205 - User found: provider@demo.com with role: provider
+2026-03-31 13:34:43,598 - Login successful for user: provider@demo.com
+2026-03-31 13:34:43,620 - Get profile for user ID: 69ac49f34dca1a73dd684deb
+2026-03-31 13:34:43,625 - Profile returned for: provider@demo.com
+2026-03-31 13:35:21,788 - Login attempt: urmilakshirsagar1945@gmail.com
+2026-03-31 13:35:21,796 - User found: urmilakshirsagar1945@gmail.com with role: customer
+2026-03-31 13:35:22,241 - Login successful for user: urmilakshirsagar1945@gmail.com
+2026-03-31 13:35:22,260 - Get profile for user ID: 69c011d05d7865c862b3923b
+2026-03-31 13:35:22,263 - Profile returned for: urmilakshirsagar1945@gmail.com
+2026-03-31 13:35:44,468 - Login attempt: urmilakshirsagar1945@gmail.com
+2026-03-31 13:35:44,474 - User found: urmilakshirsagar1945@gmail.com with role: customer
+2026-03-31 13:36:17,729 - Login attempt: urmilakshirsagar1945@gmail.com
+2026-03-31 13:36:17,741 - User found: urmilakshirsagar1945@gmail.com with role: customer
+2026-04-01 20:43:03,386 - Login attempt: urmilakshirsagar1945@gmail.com
+2026-04-01 20:43:05,694 - User found: urmilakshirsagar1945@gmail.com with role: customer
+2026-04-01 20:46:10,228 - Login attempt: urmilakshirsagar1945@gmail.com
+2026-04-01 20:46:10,364 - User found: urmilakshirsagar1945@gmail.com with role: customer
+2026-04-01 20:46:48,229 - Login attempt: urmilakshirsagar1945@gmail.com
+2026-04-01 20:46:48,240 - User found: urmilakshirsagar1945@gmail.com with role: customer
+2026-04-01 20:46:48,883 - Login successful for user: urmilakshirsagar1945@gmail.com
+2026-04-01 20:46:48,951 - Get profile for user ID: 69c011d05d7865c862b3923b
+2026-04-01 20:46:49,039 - Profile returned for: urmilakshirsagar1945@gmail.com
+2026-04-01 20:48:49,950 - Get profile for user ID: 69c011d05d7865c862b3923b
+2026-04-01 20:48:50,014 - Profile returned for: urmilakshirsagar1945@gmail.com
+2026-04-01 20:48:50,038 - Get profile for user ID: 69c011d05d7865c862b3923b
+2026-04-01 20:48:50,041 - Profile returned for: urmilakshirsagar1945@gmail.com
+2026-04-01 20:49:29,183 - Get profile for user ID: 69c011d05d7865c862b3923b
+2026-04-01 20:49:29,185 - Profile returned for: urmilakshirsagar1945@gmail.com
+2026-04-01 20:49:29,190 - Get profile for user ID: 69c011d05d7865c862b3923b
+2026-04-01 20:49:29,192 - Profile returned for: urmilakshirsagar1945@gmail.com
+2026-04-01 20:50:34,634 - Login attempt: admin@demo.com
+2026-04-01 20:50:34,662 - User found: admin@demo.com with role: admin
+2026-04-01 20:50:35,139 - Login successful for user: admin@demo.com
+2026-04-01 20:50:35,153 - Get profile for user ID: 69b145401021c84bbbdbd8b7
+2026-04-01 20:50:35,159 - Profile returned for: admin@demo.com
+2026-04-01 20:50:44,971 - Get profile for user ID: 69b145401021c84bbbdbd8b7
+2026-04-01 20:50:44,975 - Profile returned for: admin@demo.com
+2026-04-01 20:50:44,981 - Get profile for user ID: 69b145401021c84bbbdbd8b7
+2026-04-01 20:50:44,986 - Profile returned for: admin@demo.com
+2026-04-01 20:54:10,367 - Get profile for user ID: 69b145401021c84bbbdbd8b7
+2026-04-01 20:54:10,427 - Profile returned for: admin@demo.com
+2026-04-01 20:54:10,441 - Get profile for user ID: 69b145401021c84bbbdbd8b7
+2026-04-01 20:54:10,444 - Profile returned for: admin@demo.com
+2026-04-01 21:12:17,685 - Login attempt: urmilakshirsagar1945@gmail.com
+2026-04-01 21:12:17,917 - User found: urmilakshirsagar1945@gmail.com with role: customer
+2026-04-01 21:12:19,146 - Login successful for user: urmilakshirsagar1945@gmail.com
+2026-04-01 21:12:19,272 - Get profile for user ID: 69c011d05d7865c862b3923b
+2026-04-01 21:12:19,283 - Profile returned for: urmilakshirsagar1945@gmail.com
+2026-04-01 21:28:05,466 - Get profile for user ID: 69c011d05d7865c862b3923b
+2026-04-01 21:28:05,522 - Profile returned for: urmilakshirsagar1945@gmail.com
+2026-04-01 21:28:05,534 - Get profile for user ID: 69c011d05d7865c862b3923b
+2026-04-01 21:28:05,543 - Profile returned for: urmilakshirsagar1945@gmail.com
+2026-04-01 21:37:24,185 - Get profile for user ID: 69c011d05d7865c862b3923b
+2026-04-01 21:37:24,328 - Profile returned for: urmilakshirsagar1945@gmail.com
+2026-04-01 21:37:24,380 - Get profile for user ID: 69c011d05d7865c862b3923b
+2026-04-01 21:37:24,384 - Profile returned for: urmilakshirsagar1945@gmail.com
+2026-04-01 21:50:53,156 - Login attempt: customer@demo.com
+2026-04-01 21:50:53,267 - User found: customer@demo.com with role: customer
+2026-04-01 21:50:54,589 - Login successful for user: customer@demo.com
+2026-04-01 21:50:55,056 - Get profile for user ID: 697f3a098c31c4c174de4ea6
+2026-04-01 21:50:55,070 - Profile returned for: customer@demo.com
+2026-04-01 21:52:35,307 - Get profile for user ID: 697f3a098c31c4c174de4ea6
+2026-04-01 21:52:35,389 - Profile returned for: customer@demo.com
+2026-04-01 21:52:35,409 - Get profile for user ID: 697f3a098c31c4c174de4ea6
+2026-04-01 21:52:35,411 - Profile returned for: customer@demo.com
